@@ -2,7 +2,7 @@
 
 ---------------------------------------------------------------------------------------
 
-![Frutiger-Aero]((WALLPAPER)/ios.png)
+![Frutiger-Aero]((HOMESCREEN)/ios.png)
 
 - The sun is literally smiling at me like it knows something I forgot 🌞
 

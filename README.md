@@ -2,7 +2,7 @@
 
 ---------------------------------------------------------------------------------------
 
-![Frutiger-Aero]((HOMESCREEN)/fruitger-aero.png)
+![Frutiger-Aero](fruitger-aero.png)
 
 - The cloud is literally smiling at me like it knows something I forgot.
 

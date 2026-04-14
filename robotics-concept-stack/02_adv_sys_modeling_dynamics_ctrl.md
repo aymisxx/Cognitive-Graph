@@ -108,7 +108,13 @@ System controllable $\Leftrightarrow$ $\text{rank}(P) = n$
 
 ## Observability Matrix
 
-$$Q = \begin{bmatrix} C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1} \end{bmatrix} \in \mathbb{R}^{np \times n}$$
+$$
+Q = \begin{bmatrix} C \\
+ CA \\
+ CA^2 \\
+ \vdots \\
+ CA^{n-1} \end{bmatrix} \in \mathbb{R}^{np \times n}
+$$
 
 System observable $\Leftrightarrow$ $\text{rank}(Q) = n$
 
@@ -242,7 +248,11 @@ With input $u = F$ and output $y$, this is a linear time-invariant system.
 
 Setting $x_1 = y$, $x_2 = \dot{y}$:
 
-$$\dot{x} = \begin{bmatrix} 0 & 1 \\ -k/m & -c/m \end{bmatrix} x + \begin{bmatrix} 0 \\ 1/m \end{bmatrix} u, \qquad y = \begin{bmatrix} 1 & 0 \end{bmatrix} x$$
+$$
+\dot{x} = \begin{bmatrix} 0 & 1 \\
+ -k/m & -c/m \end{bmatrix} x + \begin{bmatrix} 0 \\
+ 1/m \end{bmatrix} u, \qquad y = \begin{bmatrix} 1 & 0 \end{bmatrix} x
+$$
 
 ### Multi-body Mechanical System
 
@@ -273,7 +283,10 @@ The transform exists only when $s$ is in the **region of convergence (ROC)** —
 
 ### Unit Step Function
 
-$$u_s(t) = \begin{cases} 1 & t \geq 0 \\ 0 & t < 0 \end{cases}$$
+$$
+u_s(t) = \begin{cases} 1 & t \geq 0 \\
+ 0 & t < 0 \end{cases}
+$$
 
 $$\mathcal{L}[u_s(t)] = \frac{1}{s}, \qquad \text{Re}(s) > 0$$
 
@@ -402,7 +415,13 @@ Given $\dddot{y} + a_2 \ddot{y} + a_1 \dot{y} + a_0 y = b_0 u$:
 
 Choose $x = [y, \dot{y}, \ddot{y}]^T$:
 
-$$\dot{x} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -a_0 & -a_1 & -a_2 \end{bmatrix} x + \begin{bmatrix} 0 \\ 0 \\ b_0 \end{bmatrix} u$$
+$$
+\dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ -a_0 & -a_1 & -a_2 \end{bmatrix} x + \begin{bmatrix} 0 \\
+ 0 \\
+ b_0 \end{bmatrix} u
+$$
 
 ### Method 2: Via transfer function (when derivatives of $u$ appear)
 
@@ -416,7 +435,13 @@ Given $\dddot{y} + a_2 \ddot{y} + a_1 \dot{y} + a_0 y = b_2 \ddot{u} + b_1 \dot{
 
 4. $H_2(s)$ gives the output equation $y = b_2 \ddot{w} + b_1 \dot{w} + b_0 w = b_2 x_3 + b_1 x_2 + b_0 x_1$.
 
-$$\dot{x} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -a_0 & -a_1 & -a_2 \end{bmatrix} x + \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} u, \qquad y = \begin{bmatrix} b_0 & b_1 & b_2 \end{bmatrix} x$$
+$$
+\dot{x} = \begin{bmatrix} 0 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ -a_0 & -a_1 & -a_2 \end{bmatrix} x + \begin{bmatrix} 0 \\
+ 0 \\
+ 1 \end{bmatrix} u, \qquad y = \begin{bmatrix} b_0 & b_1 & b_2 \end{bmatrix} x
+$$
 
 This is exactly the **Controller Canonical Form** (covered in Module 4).
 
@@ -466,7 +491,12 @@ The second bracket is exactly $H(s)$.
 
 ### Example
 
-$$\dot{x} = \begin{bmatrix} 0 & 1 \\ -2 & -3 \end{bmatrix} x + \begin{bmatrix} 0 \\ 1 \end{bmatrix} u, \quad x(0) = \begin{bmatrix} -1 \\ 1 \end{bmatrix}, \quad y = \begin{bmatrix} 1 & 1 \end{bmatrix} x$$
+$$
+\dot{x} = \begin{bmatrix} 0 & 1 \\
+ -2 & -3 \end{bmatrix} x + \begin{bmatrix} 0 \\
+ 1 \end{bmatrix} u, \quad x(0) = \begin{bmatrix} -1 \\
+ 1 \end{bmatrix}, \quad y = \begin{bmatrix} 1 & 1 \end{bmatrix} x
+$$
 
 With unit step input $U(s) = 1/s$:
 
@@ -492,7 +522,10 @@ where $f$ and $h$ are vector-valued nonlinear functions.
 
 Let $x = [\theta, \dot{\theta}]^T$, input $u = T$ (external torque):
 
-$$\dot{x} = \begin{bmatrix} x_2 \\ -\frac{g}{l}\sin(x_1) + \frac{1}{ml^2} u \end{bmatrix} = f(x, u)$$
+$$
+\dot{x} = \begin{bmatrix} x_2 \\
+ -\frac{g}{l}\sin(x_1) + \frac{1}{ml^2} u \end{bmatrix} = f(x, u)
+$$
 
 $$y = x_1 = \theta$$
 
@@ -531,7 +564,11 @@ Set $\dot{x} = f(x_{eq}, u_{eq}) = 0$ and solve for $x_{eq}$.
 
 **Pendulum example** with $u_{eq} = 0$:
 
-$$\begin{bmatrix} x_{2,eq} \\ -\frac{g}{l}\sin(x_{1,eq}) \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$$
+$$
+\begin{bmatrix} x_{2,eq} \\
+ -\frac{g}{l}\sin(x_{1,eq}) \end{bmatrix} = \begin{bmatrix} 0 \\
+ 0 \end{bmatrix}
+$$
 
 $$\implies x_{2,eq} = 0, \quad \sin(x_{1,eq}) = 0 \implies x_{1,eq} = n\pi$$
 
@@ -539,7 +576,11 @@ Two equilibria: $x_{eq} = [0, 0]^T$ (pendulum down, stable) and $x_{eq} = [\pi, 
 
 ### Pendulum Linearized at $x_{eq} = [0, 0]^T$
 
-$$A = \begin{bmatrix} 0 & 1 \\ -g/l & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 0 \\ 1/(ml^2) \end{bmatrix}$$
+$$
+A = \begin{bmatrix} 0 & 1 \\
+ -g/l & 0 \end{bmatrix}, \quad B = \begin{bmatrix} 0 \\
+ 1/(ml^2) \end{bmatrix}
+$$
 
 ### Nonlinear Spring-Mass-Damper Example
 
@@ -547,9 +588,17 @@ System: $m\ddot{y} = F - ky^3 - c\dot{y}$, with $m = c = k = 1$.
 
 States: $x_1 = y$, $x_2 = \dot{y}$. Equilibrium at $\tilde{x} = [1, 0]^T$, $\tilde{u} = 1$:
 
-$$A = \begin{bmatrix} 0 & 1 \\ -3x_1^2 & -c/m \end{bmatrix}\bigg|_{x_1=1, x_2=0} = \begin{bmatrix} 0 & 1 \\ -3 & -3 \end{bmatrix}$$
+$$
+A = \begin{bmatrix} 0 & 1 \\
+ -3x_1^2 & -c/m \end{bmatrix}\bigg|_{x_1=1, x_2=0} = \begin{bmatrix} 0 & 1 \\
+ -3 & -3 \end{bmatrix}
+$$
 
-$$B = \begin{bmatrix} 0 \\ 1/m \end{bmatrix}\bigg|_{\tilde{x}, \tilde{u}} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$$
+$$
+B = \begin{bmatrix} 0 \\
+ 1/m \end{bmatrix}\bigg|_{\tilde{x}, \tilde{u}} = \begin{bmatrix} 0 \\
+ 1 \end{bmatrix}
+$$
 
 > **Robotics connection:** Linearization around an operating point is how you apply linear control theory (pole placement, LQR) to fundamentally nonlinear robotic systems. The Jacobian $A$ is literally the Jacobian matrix from linear algebra — the same one that appears in robot Jacobians and numerical methods.
 
@@ -609,7 +658,11 @@ If all $n$ eigenvalues are **distinct**, then $A$ is always diagonalizable (each
 3. Construct $T_{DCF} = [v_1 \; v_2 \; \cdots \; v_n]$.
 4. Then:
 
-$$\hat{A}_{DCF} = T_{DCF}^{-1} A T_{DCF} = \begin{bmatrix} \lambda_1 & & \\ & \ddots & \\ & & \lambda_n \end{bmatrix}$$
+$$
+\hat{A}_{DCF} = T_{DCF}^{-1} A T_{DCF} = \begin{bmatrix} \lambda_1 & & \\
+ & \ddots & \\
+ & & \lambda_n \end{bmatrix}
+$$
 
 $$\hat{B}_{DCF} = T_{DCF}^{-1} B, \quad \hat{C}_{DCF} = C T_{DCF}, \quad \hat{D}_{DCF} = D$$
 
@@ -625,15 +678,27 @@ $$e^{\hat{A}_{DCF} t} = \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})$$
 
 ### Example: DCF
 
-$$A = \begin{bmatrix} 0 & 1 \\ -2 & -3 \end{bmatrix}, \quad B = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \quad C = \begin{bmatrix} 1 & 1 \end{bmatrix}$$
+$$
+A = \begin{bmatrix} 0 & 1 \\
+ -2 & -3 \end{bmatrix}, \quad B = \begin{bmatrix} 0 \\
+ 1 \end{bmatrix}, \quad C = \begin{bmatrix} 1 & 1 \end{bmatrix}
+$$
 
 Eigenvalues: $\lambda_1 = -1$, $\lambda_2 = -2$.
 
 Eigenvectors: $v_1 = [1, -1]^T$, $v_2 = [-1, 2]^T$.
 
-$$T_{DCF} = \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix}, \quad T_{DCF}^{-1} = \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}$$
+$$
+T_{DCF} = \begin{bmatrix} 1 & -1 \\
+ -1 & 2 \end{bmatrix}, \quad T_{DCF}^{-1} = \begin{bmatrix} 2 & 1 \\
+ 1 & 1 \end{bmatrix}
+$$
 
-$$\hat{A}_{DCF} = \begin{bmatrix} -1 & 0 \\ 0 & -2 \end{bmatrix}, \quad \hat{B}_{DCF} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}, \quad \hat{C}_{DCF} = \begin{bmatrix} 0 & 1 \end{bmatrix}$$
+$$
+\hat{A}_{DCF} = \begin{bmatrix} -1 & 0 \\
+ 0 & -2 \end{bmatrix}, \quad \hat{B}_{DCF} = \begin{bmatrix} 1 \\
+ 1 \end{bmatrix}, \quad \hat{C}_{DCF} = \begin{bmatrix} 0 & 1 \end{bmatrix}
+$$
 
 ## 5.3 Controller Canonical Form (CCF)
 
@@ -643,7 +708,17 @@ $$H(s) = \frac{b_{n-1}s^{n-1} + \cdots + b_1 s + b_0}{s^n + a_{n-1}s^{n-1} + \cd
 
 The CCF state matrices are:
 
-$$A_{CCF} = \begin{bmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & & & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & 1 \\ -a_0 & -a_1 & -a_2 & \cdots & -a_{n-1} \end{bmatrix}, \quad B_{CCF} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ 1 \end{bmatrix}$$
+$$
+A_{CCF} = \begin{bmatrix} 0 & 1 & 0 & \cdots & 0 \\
+ 0 & 0 & 1 & \cdots & 0 \\
+ \vdots & & & \ddots & \vdots \\
+ 0 & 0 & 0 & \cdots & 1 \\
+ -a_0 & -a_1 & -a_2 & \cdots & -a_{n-1} \end{bmatrix}, \quad B_{CCF} = \begin{bmatrix} 0 \\
+ 0 \\
+ \vdots \\
+ 0 \\
+ 1 \end{bmatrix}
+$$
 
 $$C_{CCF} = \begin{bmatrix} b_0 & b_1 & \cdots & b_{n-1} \end{bmatrix}, \quad D_{CCF} = 0$$
 
@@ -659,11 +734,21 @@ $$C_{CCF} = \begin{bmatrix} b_0 & b_1 & \cdots & b_{n-1} \end{bmatrix}, \quad D_
 
 The inverse of the CCF controllability matrix is:
 
-$$P_{CCF}^{-1} = \begin{bmatrix} a_1 & a_2 & \cdots & a_{n-1} & 1 \\ a_2 & a_3 & \cdots & 1 & 0 \\ \vdots & & \iddots & & \vdots \\ a_{n-1} & 1 & \cdots & 0 & 0 \\ 1 & 0 & \cdots & 0 & 0 \end{bmatrix}$$
+$$
+P_{CCF}^{-1} = \begin{bmatrix} a_1 & a_2 & \cdots & a_{n-1} & 1 \\
+ a_2 & a_3 & \cdots & 1 & 0 \\
+ \vdots & & \ddots & & \vdots \\
+ a_{n-1} & 1 & \cdots & 0 & 0 \\
+ 1 & 0 & \cdots & 0 & 0 \end{bmatrix}
+$$
 
 ### CCF Example
 
-$$\dot{x} = \begin{bmatrix} -1 & -2 \\ 0 & -1 \end{bmatrix} x + \begin{bmatrix} 1 \\ 1 \end{bmatrix} u, \quad y = \begin{bmatrix} 1 & 0 \end{bmatrix} x$$
+$$
+\dot{x} = \begin{bmatrix} -1 & -2 \\
+ 0 & -1 \end{bmatrix} x + \begin{bmatrix} 1 \\
+ 1 \end{bmatrix} u, \quad y = \begin{bmatrix} 1 & 0 \end{bmatrix} x
+$$
 
 1. $P = [B \; AB] = \begin{bmatrix} 1 & -3 \\ 1 & -1 \end{bmatrix}$, $|P| = 2 \neq 0$ → controllable.
 
@@ -678,9 +763,20 @@ $$\dot{x} = \begin{bmatrix} -1 & -2 \\ 0 & -1 \end{bmatrix} x + \begin{bmatrix} 
 
 The OCF is the dual of the CCF. For the same $H(s)$:
 
-$$A_{OCF} = \begin{bmatrix} 0 & 0 & \cdots & 0 & -a_0 \\ 1 & 0 & \cdots & 0 & -a_1 \\ 0 & 1 & \cdots & 0 & -a_2 \\ \vdots & & \ddots & \vdots & \vdots \\ 0 & 0 & \cdots & 1 & -a_{n-1} \end{bmatrix} = A_{CCF}^T$$
+$$
+A_{OCF} = \begin{bmatrix} 0 & 0 & \cdots & 0 & -a_0 \\
+ 1 & 0 & \cdots & 0 & -a_1 \\
+ 0 & 1 & \cdots & 0 & -a_2 \\
+ \vdots & & \ddots & \vdots & \vdots \\
+ 0 & 0 & \cdots & 1 & -a_{n-1} \end{bmatrix} = A_{CCF}^T
+$$
 
-$$B_{OCF} = \begin{bmatrix} b_0 \\ b_1 \\ \vdots \\ b_{n-1} \end{bmatrix} = C_{CCF}^T, \quad C_{OCF} = \begin{bmatrix} 0 & 0 & \cdots & 0 & 1 \end{bmatrix} = B_{CCF}^T, \quad D_{OCF} = 0$$
+$$
+B_{OCF} = \begin{bmatrix} b_0 \\
+ b_1 \\
+ \vdots \\
+ b_{n-1} \end{bmatrix} = C_{CCF}^T, \quad C_{OCF} = \begin{bmatrix} 0 & 0 & \cdots & 0 & 1 \end{bmatrix} = B_{CCF}^T, \quad D_{OCF} = 0
+$$
 
 **A system in OCF is always observable** (by construction).
 
@@ -757,7 +853,11 @@ If $\text{rank}(P) = q < n$, the system has an uncontrollable part.
 
 **Standard form:**
 
-$$A = \begin{bmatrix} A_{11} & A_{12} \\ 0 & A_{22} \end{bmatrix}, \quad B = \begin{bmatrix} B_1 \\ 0 \end{bmatrix}$$
+$$
+A = \begin{bmatrix} A_{11} & A_{12} \\
+ 0 & A_{22} \end{bmatrix}, \quad B = \begin{bmatrix} B_1 \\
+ 0 \end{bmatrix}
+$$
 
 where $(A_{11}, B_1)$ is the **controllable $q$-dimensional subsystem**.
 
@@ -779,7 +879,13 @@ If yes, the system is observable.
 
 ### The Observability Matrix
 
-$$Q = \begin{bmatrix} C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1} \end{bmatrix} \in \mathbb{R}^{np \times n}$$
+$$
+Q = \begin{bmatrix} C \\
+ CA \\
+ CA^2 \\
+ \vdots \\
+ CA^{n-1} \end{bmatrix} \in \mathbb{R}^{np \times n}
+$$
 
 $$\text{System is observable} \Leftrightarrow \text{rank}(Q) = n$$
 
@@ -807,7 +913,10 @@ If $\text{rank}(Q) = q < n$, the system has an unobservable part.
 
 **Standard form:**
 
-$$\hat{A} = \begin{bmatrix} \hat{A}_{11} & 0 \\ \hat{A}_{21} & \hat{A}_{22} \end{bmatrix}, \quad \hat{C} = \begin{bmatrix} \hat{C}_1 & 0 \end{bmatrix}$$
+$$
+\hat{A} = \begin{bmatrix} \hat{A}_{11} & 0 \\
+ \hat{A}_{21} & \hat{A}_{22} \end{bmatrix}, \quad \hat{C} = \begin{bmatrix} \hat{C}_1 & 0 \end{bmatrix}
+$$
 
 where $(\hat{A}_{11}, \hat{C}_1)$ is the **observable $q$-dimensional subsystem**.
 
@@ -930,7 +1039,10 @@ For symmetric $P \in \mathbb{R}^{n \times n}$:
 
 **Sylvester's criterion:** $P \succ 0$ if and only if all **leading principal minors** are positive:
 
-$$p_{11} > 0, \quad \begin{vmatrix} p_{11} & p_{12} \\ p_{21} & p_{22} \end{vmatrix} > 0, \quad \ldots, \quad \det(P) > 0$$
+$$
+p_{11} > 0, \quad \begin{vmatrix} p_{11} & p_{12} \\
+ p_{21} & p_{22} \end{vmatrix} > 0, \quad \ldots, \quad \det(P) > 0
+$$
 
 ### Lyapunov's Direct Method
 
@@ -1321,13 +1433,22 @@ Combine controller and observer:
 
 Write the system in terms of $x$ (true state) and $e = x - \hat{x}$ (estimation error):
 
-$$\begin{bmatrix} \dot{x} \\ \dot{e} \end{bmatrix} = \begin{bmatrix} A - BK & BK \\ 0 & A - LC \end{bmatrix} \begin{bmatrix} x \\ e \end{bmatrix} + \begin{bmatrix} BG \\ 0 \end{bmatrix} r$$
+$$
+\begin{bmatrix} \dot{x} \\
+ \dot{e} \end{bmatrix} = \begin{bmatrix} A - BK & BK \\
+ 0 & A - LC \end{bmatrix} \begin{bmatrix} x \\
+ e \end{bmatrix} + \begin{bmatrix} BG \\
+ 0 \end{bmatrix} r
+$$
 
 The augmented system matrix is **block upper triangular**.
 
 ## 13.2 Separation Principle
 
-$$\text{eig}\!\begin{pmatrix} \begin{bmatrix} A - BK & BK \\ 0 & A - LC \end{bmatrix} \end{pmatrix} = \text{eig}(A - BK) \cup \text{eig}(A - LC)$$
+$$
+\text{eig}\!\begin{pmatrix} \begin{bmatrix} A - BK & BK \\
+ 0 & A - LC \end{bmatrix} \end{pmatrix} = \text{eig}(A - BK) \cup \text{eig}(A - LC)
+$$
 
 The eigenvalues of the combined system are the union of the controller eigenvalues and the observer eigenvalues.
 
@@ -1472,7 +1593,11 @@ In many robots, only positions are measurable (encoders), not velocities. Is the
 
 For the simple integrator model $\ddot{q} = \tau/m$ with $C = [1, 0]$ (only position measured):
 
-$$Q = \begin{bmatrix} C \\ CA \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$$
+$$
+Q = \begin{bmatrix} C \\
+ CA \end{bmatrix} = \begin{bmatrix} 1 & 0 \\
+ 0 & 1 \end{bmatrix}
+$$
 
 $\text{rank}(Q) = 2$ → observable. Velocity can be estimated from position measurements via a Luenberger observer (or Kalman filter).
 
@@ -1566,7 +1691,12 @@ $$W(t_0, t_f) = \int_{t_0}^{t_f} e^{A(t_0-\tau)} BB^T e^{A^T(t_0-\tau)}\, d\tau,
 
 ## Observability
 
-$$Q = \begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1} \end{bmatrix}, \quad \text{rank}(Q) \stackrel{?}{=} n$$
+$$
+Q = \begin{bmatrix} C \\
+ CA \\
+ \vdots \\
+ CA^{n-1} \end{bmatrix}, \quad \text{rank}(Q) \stackrel{?}{=} n
+$$
 
 $$M(t_0, t_f) = \int_{t_0}^{t_f} e^{A^T(\tau-t_0)} C^T C\, e^{A(\tau-t_0)}\, d\tau, \quad M \text{ invertible} \Leftrightarrow \text{observable}$$
 

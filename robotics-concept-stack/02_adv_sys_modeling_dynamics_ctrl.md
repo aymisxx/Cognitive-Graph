@@ -104,17 +104,17 @@ $$H(s) = C(sI - A)^{-1}B + D$$
 
 $$P = \begin{bmatrix} B & AB & A^2B & \cdots & A^{n-1}B \end{bmatrix} \in \mathbb{R}^{n \times nm}$$
 
-System controllable $\Leftrightarrow$ $\operatorname{rank}(P) = n$
+System controllable $\Leftrightarrow$ $\text{rank}(P) = n$
 
 ## Observability Matrix
 
 $$Q = \begin{bmatrix} C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1} \end{bmatrix} \in \mathbb{R}^{np \times n}$$
 
-System observable $\Leftrightarrow$ $\operatorname{rank}(Q) = n$
+System observable $\Leftrightarrow$ $\text{rank}(Q) = n$
 
 ## Asymptotic Stability
 
-$$x_{\text{eq}} = 0 \text{ is asymptotically stable} \Leftrightarrow A \text{ is Hurwitz} \Leftrightarrow \operatorname{Re}(\lambda_i) < 0 \; \forall i$$
+$$x_{\text{eq}} = 0 \text{ is asymptotically stable} \Leftrightarrow A \text{ is Hurwitz} \Leftrightarrow \text{Re}(\lambda_i) < 0 \; \forall i$$
 
 ## Closed-Loop System (State Feedback)
 
@@ -275,7 +275,7 @@ The transform exists only when $s$ is in the **region of convergence (ROC)** —
 
 $$u_s(t) = \begin{cases} 1 & t \geq 0 \\ 0 & t < 0 \end{cases}$$
 
-$$\mathcal{L}[u_s(t)] = \frac{1}{s}, \qquad \operatorname{Re}(s) > 0$$
+$$\mathcal{L}[u_s(t)] = \frac{1}{s}, \qquad \text{Re}(s) > 0$$
 
 ### Key Laplace Transform Pairs
 
@@ -347,7 +347,7 @@ $$H(s) = C(sI - A)^{-1}B + D$$
 
 This is the exact formula. For a $2 \times 2$ system:
 
-$$(sI - A)^{-1} = \frac{1}{\det(sI - A)} \operatorname{adj}(sI - A)$$
+$$(sI - A)^{-1} = \frac{1}{\det(sI - A)} \text{adj}(sI - A)$$
 
 The denominator $\det(sI - A)$ is the **characteristic polynomial**, and its roots are the eigenvalues of $A$.
 
@@ -447,9 +447,9 @@ $$e^{At} = I + At + \frac{(At)^2}{2!} + \frac{(At)^3}{3!} + \cdots$$
 
 $$e^{At} = \mathcal{L}^{-1}\left[ (sI - A)^{-1} \right]$$
 
-For a diagonal matrix $A = \operatorname{diag}(\lambda_1, \ldots, \lambda_n)$:
+For a diagonal matrix $A = \text{diag}(\lambda_1, \ldots, \lambda_n)$:
 
-$$e^{At} = \operatorname{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})$$
+$$e^{At} = \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})$$
 
 ### Full Solution (Non-Homogeneous)
 
@@ -589,7 +589,7 @@ So the characteristic polynomial is unchanged.
 
 If $A$ is **diagonalizable**, it can be transformed into:
 
-$$\hat{A}_{DCF} = \operatorname{diag}(\lambda_1, \lambda_2, \ldots, \lambda_n)$$
+$$\hat{A}_{DCF} = \text{diag}(\lambda_1, \lambda_2, \ldots, \lambda_n)$$
 
 **When is $A$ diagonalizable?**
 
@@ -621,7 +621,7 @@ $$\dot{z}_i = \lambda_i z_i + \hat{b}_i u \quad \text{for each } i$$
 
 Each is solvable independently. This makes computing $e^{\hat{A}t}$ trivial:
 
-$$e^{\hat{A}_{DCF} t} = \operatorname{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})$$
+$$e^{\hat{A}_{DCF} t} = \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})$$
 
 ### Example: DCF
 
@@ -651,7 +651,7 @@ $$C_{CCF} = \begin{bmatrix} b_0 & b_1 & \cdots & b_{n-1} \end{bmatrix}, \quad D_
 
 ### Converting to CCF (4 Steps)
 
-1. Compute $P = [B \; AB \; \cdots \; A^{n-1}B]$ and verify controllability ($\operatorname{rank}(P) = n$).
+1. Compute $P = [B \; AB \; \cdots \; A^{n-1}B]$ and verify controllability ($\text{rank}(P) = n$).
 2. Compute characteristic polynomial: $\det(sI - A) = s^n + a_{n-1}s^{n-1} + \cdots + a_0$.  
    Compute $P_{CCF}^{-1}$ (see formula below).
 3. Compute transformation: $T_{CCF} = P \cdot P_{CCF}^{-1}$.
@@ -686,7 +686,7 @@ $$B_{OCF} = \begin{bmatrix} b_0 \\ b_1 \\ \vdots \\ b_{n-1} \end{bmatrix} = C_{C
 
 ### Converting to OCF (4 Steps)
 
-1. Compute $Q$ and verify observability ($\operatorname{rank}(Q) = n$).
+1. Compute $Q$ and verify observability ($\text{rank}(Q) = n$).
 2. Compute characteristic polynomial and $Q_{OCF}^{-1}$.
 3. $T_{OCF} = Q_{OCF}^{-1} \cdot Q$.
 4. Write OCF.
@@ -729,7 +729,7 @@ For **discrete-time LTI systems**, reachability $\Rightarrow$ controllability, b
 
 $$P = \begin{bmatrix} B & AB & A^2B & \cdots & A^{n-1}B \end{bmatrix} \in \mathbb{R}^{n \times nm}$$
 
-$$\text{System is controllable} \Leftrightarrow \operatorname{rank}(P) = n$$
+$$\text{System is controllable} \Leftrightarrow \text{rank}(P) = n$$
 
 MATLAB: `ctrb(A, B)`.
 
@@ -753,7 +753,7 @@ $$\int_{t_0}^{t_f} u^T(t) u(t)\, dt$$
 
 ## 6.2 Canonical Decomposition for Uncontrollable Systems
 
-If $\operatorname{rank}(P) = q < n$, the system has an uncontrollable part.
+If $\text{rank}(P) = q < n$, the system has an uncontrollable part.
 
 **Standard form:**
 
@@ -765,7 +765,7 @@ Input $u$ cannot influence $x_2$ (the uncontrollable states) — directly or ind
 
 ### Decomposition Procedure
 
-1. Compute $P$, find $q = \operatorname{rank}(P) < n$.
+1. Compute $P$, find $q = \text{rank}(P) < n$.
 2. Construct $T = [t_1, \ldots, t_q \;|\; t_{q+1}, \ldots, t_n]$ where the first $q$ columns are linearly independent columns of $P$, and the remaining $n-q$ columns are chosen to make $T$ non-singular.
 3. Compute $\hat{A} = T^{-1}AT$, $\hat{B} = T^{-1}B$, $\hat{C} = CT$.
 
@@ -781,7 +781,7 @@ If yes, the system is observable.
 
 $$Q = \begin{bmatrix} C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1} \end{bmatrix} \in \mathbb{R}^{np \times n}$$
 
-$$\text{System is observable} \Leftrightarrow \operatorname{rank}(Q) = n$$
+$$\text{System is observable} \Leftrightarrow \text{rank}(Q) = n$$
 
 MATLAB: `obsv(A, C)`.
 
@@ -803,7 +803,7 @@ where $y_{zi}(t) = y(t) - y_{zs}(t)$ is the zero-input output (obtained by subtr
 
 ## 6.4 Canonical Decomposition for Unobservable Systems
 
-If $\operatorname{rank}(Q) = q < n$, the system has an unobservable part.
+If $\text{rank}(Q) = q < n$, the system has an unobservable part.
 
 **Standard form:**
 
@@ -813,7 +813,7 @@ where $(\hat{A}_{11}, \hat{C}_1)$ is the **observable $q$-dimensional subsystem*
 
 ### Decomposition Procedure (via Duality)
 
-1. Compute $Q$, find $q = \operatorname{rank}(Q) < n$.
+1. Compute $Q$, find $q = \text{rank}(Q) < n$.
 2. Construct $T^{-1}$ using the rows of $Q$ (analogous to using columns of $P$ for controllability).
    - First $q$ rows of $T^{-1}$: linearly independent rows of $Q$.
    - Remaining $n - q$ rows: chosen to make $T^{-1}$ non-singular.
@@ -867,7 +867,7 @@ The entries of $e^{At}$ contain terms of the form $t^k e^{\lambda t}$ where $\la
 
 ### Asymptotic Stability (Hurwitz Condition)
 
-$$x_{eq} = 0 \text{ is asymptotically stable} \Leftrightarrow A \text{ is Hurwitz} \Leftrightarrow \operatorname{Re}(\lambda_i) < 0 \; \forall i$$
+$$x_{eq} = 0 \text{ is asymptotically stable} \Leftrightarrow A \text{ is Hurwitz} \Leftrightarrow \text{Re}(\lambda_i) < 0 \; \forall i$$
 
 For LTI systems, asymptotic stability = global asymptotic stability.
 
@@ -875,27 +875,27 @@ For LTI systems, asymptotic stability = global asymptotic stability.
 
 $x_{eq} = 0$ is stable (marginally) if and only if every eigenvalue $\lambda$ of $A$ satisfies:
 
-- $\operatorname{Re}(\lambda) < 0$, OR
-- $\operatorname{Re}(\lambda) = 0$ **and** $\lambda$ has A.M. = G.M.
+- $\text{Re}(\lambda) < 0$, OR
+- $\text{Re}(\lambda) = 0$ **and** $\lambda$ has A.M. = G.M.
 
-When $\operatorname{Re}(\lambda) = 0$ but A.M. > G.M. → **unstable** (polynomial growth $t^k e^0 = t^k \to \infty$).
+When $\text{Re}(\lambda) = 0$ but A.M. > G.M. → **unstable** (polynomial growth $t^k e^0 = t^k \to \infty$).
 
 ### Summary Table
 
 | Eigenvalue location | A.M. vs G.M. | Stability |
 |---|---|---|
-| $\operatorname{Re}(\lambda) < 0$ | any | Asymptotically stable |
-| $\operatorname{Re}(\lambda) = 0$ | A.M. = G.M. | Marginally stable |
-| $\operatorname{Re}(\lambda) = 0$ | A.M. > G.M. | Unstable |
-| $\operatorname{Re}(\lambda) > 0$ | any | Unstable |
+| $\text{Re}(\lambda) < 0$ | any | Asymptotically stable |
+| $\text{Re}(\lambda) = 0$ | A.M. = G.M. | Marginally stable |
+| $\text{Re}(\lambda) = 0$ | A.M. > G.M. | Unstable |
+| $\text{Re}(\lambda) > 0$ | any | Unstable |
 
 ### Lyapunov's Indirect Method
 
 For a nonlinear system $\dot{x} = f(x)$ linearized to $\dot{x}_\delta = A x_\delta$:
 
 - If $A$ is Hurwitz $\Rightarrow$ nonlinear system is locally asymptotically stable.
-- If $A$ has eigenvalues with $\operatorname{Re}(\lambda) > 0$ $\Rightarrow$ nonlinear system is unstable.
-- If $\operatorname{Re}(\lambda) = 0$ for some eigenvalues $\Rightarrow$ no conclusion from this method.
+- If $A$ has eigenvalues with $\text{Re}(\lambda) > 0$ $\Rightarrow$ nonlinear system is unstable.
+- If $\text{Re}(\lambda) = 0$ for some eigenvalues $\Rightarrow$ no conclusion from this method.
 
 ## 7.3 Phase Portraits
 
@@ -907,9 +907,9 @@ For 2D systems $\dot{x} = Ax$ with $A$ diagonalizable ($\lambda_1$, $\lambda_2$ 
 | Real, same sign | $\lambda_1, \lambda_2 > 0$, $\lambda_1 \neq \lambda_2$ | **Unstable node** (source) | Unstable |
 | Real, opposite sign | $\lambda_1 < 0 < \lambda_2$ | **Saddle** | Unstable |
 | Real, one zero | $\lambda_1 = 0$, $\lambda_2 \neq 0$ | Lines/rays | Marginally stable or unstable |
-| Complex | $\operatorname{Re}(\lambda) < 0$ | **Stable focus** (spiral in) | Asymptotically stable |
-| Complex | $\operatorname{Re}(\lambda) > 0$ | **Unstable focus** (spiral out) | Unstable |
-| Pure imaginary | $\operatorname{Re}(\lambda) = 0$ | **Center** | Marginally stable |
+| Complex | $\text{Re}(\lambda) < 0$ | **Stable focus** (spiral in) | Asymptotically stable |
+| Complex | $\text{Re}(\lambda) > 0$ | **Unstable focus** (spiral out) | Unstable |
+| Pure imaginary | $\text{Re}(\lambda) = 0$ | **Center** | Marginally stable |
 | Real, equal | $\lambda_1 = \lambda_2$, A.M. = G.M. | **Stable/unstable star** | Depends on sign |
 
 The direction of rotation (clockwise vs counterclockwise) for complex eigenvalues is determined by the off-diagonal entry $a_{21}$: counterclockwise if $a_{21} > 0$.
@@ -1003,7 +1003,7 @@ $$\int_0^\infty |h(t)|\, dt < \infty$$
 
 **Method 2 — Transfer function poles:** The SISO system with transfer function $H(s)$ is BIBO stable if and only if all poles of $H(s)$ have negative real parts.
 
-The impulse response contains terms of the form $t^k e^{st}$ for each pole $s$ of $H(s)$. These are absolutely integrable only when $\operatorname{Re}(s) < 0$.
+The impulse response contains terms of the form $t^k e^{st}$ for each pole $s$ of $H(s)$. These are absolutely integrable only when $\text{Re}(s) < 0$.
 
 ## 8.2 Relationship: BIBO vs. Internal Stability
 
@@ -1135,9 +1135,9 @@ $$s_{1,2} = -\zeta\omega_n \pm \omega_n\sqrt{\zeta^2 - 1}$$
 |---|---|---|---|
 | Overdamped | $\zeta > 1$ | Two distinct real, negative | Asymp. stable |
 | Critically damped | $\zeta = 1$ | Repeated real, negative | Asymp. stable |
-| Underdamped | $0 < \zeta < 1$ | Complex conjugate, $\operatorname{Re} < 0$ | Asymp. stable |
+| Underdamped | $0 < \zeta < 1$ | Complex conjugate, $\text{Re} < 0$ | Asymp. stable |
 | Undamped | $\zeta = 0$ | Pure imaginary | Marginally stable |
-| Negative damping | $\zeta < 0$ | $\operatorname{Re} > 0$ | Unstable |
+| Negative damping | $\zeta < 0$ | $\text{Re} > 0$ | Unstable |
 
 ## 10.2 Transient Response Specifications
 
@@ -1215,7 +1215,7 @@ A higher-order system can often be approximated by its dominant poles — the po
 
 **Rule:** A pole $s_2$ is dominated by $s_1$ if:
 
-$$|\operatorname{Re}(s_2)| > 10 \cdot |\operatorname{Re}(s_1)|$$
+$$|\text{Re}(s_2)| > 10 \cdot |\text{Re}(s_1)|$$
 
 i.e., $s_2$ is at least 10 times further to the left in the complex plane.
 
@@ -1327,7 +1327,7 @@ The augmented system matrix is **block upper triangular**.
 
 ## 13.2 Separation Principle
 
-$$\operatorname{eig}\!\begin{pmatrix} \begin{bmatrix} A - BK & BK \\ 0 & A - LC \end{bmatrix} \end{pmatrix} = \operatorname{eig}(A - BK) \cup \operatorname{eig}(A - LC)$$
+$$\text{eig}\!\begin{pmatrix} \begin{bmatrix} A - BK & BK \\ 0 & A - LC \end{bmatrix} \end{pmatrix} = \text{eig}(A - BK) \cup \text{eig}(A - LC)$$
 
 The eigenvalues of the combined system are the union of the controller eigenvalues and the observer eigenvalues.
 
@@ -1376,7 +1376,7 @@ MATLAB: `[K, P, e] = lqr(A, B, Q, R)`.
 
 **State cost $Q$:** encodes how much you penalize deviations in each state variable.
 
-Example: $Q = \operatorname{diag}(100, 1)$ penalizes $x_1$ deviations 100× more than $x_2$.
+Example: $Q = \text{diag}(100, 1)$ penalizes $x_1$ deviations 100× more than $x_2$.
 
 **Input cost $R$:** encodes how expensive control effort is.
 
@@ -1420,22 +1420,22 @@ LQR provides guaranteed gain margin of $\geq 6$ dB and phase margin of $\geq 60�
 
 - **Mistake:** Assuming all eigenvalues of $A$ are poles of $H(s)$. They aren't — pole-zero cancellations can occur.
 - **Check:** Poles of $H(s) \subseteq$ eigenvalues of $A$. Equality only for minimal realizations.
-- **Mistake:** Concluding stability from $\operatorname{Re}(\lambda) = 0$ without checking A.M. vs G.M.
-- **Check:** $\operatorname{Re}(\lambda) = 0$ + A.M. = G.M. → marginally stable. A.M. > G.M. → unstable.
+- **Mistake:** Concluding stability from $\text{Re}(\lambda) = 0$ without checking A.M. vs G.M.
+- **Check:** $\text{Re}(\lambda) = 0$ + A.M. = G.M. → marginally stable. A.M. > G.M. → unstable.
 
 ## On Controllability and Observability
 
 - **Mistake:** Confusing controllability (steering to origin) with reachability (steering from origin). For continuous-time LTI, they are equivalent.
-- **Check:** Always use $\operatorname{rank}(P) = n$ for controllability, $\operatorname{rank}(Q) = n$ for observability.
+- **Check:** Always use $\text{rank}(P) = n$ for controllability, $\text{rank}(Q) = n$ for observability.
 - **Mistake:** Thinking a non-minimal realization that is BIBO stable is also internally stable.
 - **Check:** BIBO stable + non-minimal ≠ asymptotically stable. Hidden unstable modes can exist.
 
 ## On Controller and Observer Design
 
 - **Mistake:** Designing $K$ for a system that is not controllable. Pole placement requires full controllability.
-- **Check:** Verify $\operatorname{rank}(P) = n$ before pole placement.
+- **Check:** Verify $\text{rank}(P) = n$ before pole placement.
 - **Mistake:** Designing $L$ for a system that is not observable. Observer design requires full observability.
-- **Check:** Verify $\operatorname{rank}(Q) = n$ before observer design.
+- **Check:** Verify $\text{rank}(Q) = n$ before observer design.
 - **Mistake:** Placing observer poles at the same speed as controller poles. The observer should be faster.
 - **Rule of thumb:** Observer poles 3–5× further left than controller poles in the complex plane.
 
@@ -1464,7 +1464,7 @@ The state $x = [q, \dot{q}]^T$ (joint positions and velocities), input $u = \tau
 
 ## Controllability → Can the Robot Reach Any Configuration?
 
-If $\operatorname{rank}(P) = n$, the linearized robot model is controllable — you can drive the joints anywhere in a neighborhood of the equilibrium.
+If $\text{rank}(P) = n$, the linearized robot model is controllable — you can drive the joints anywhere in a neighborhood of the equilibrium.
 
 ## Observability → State Estimation from Sensors
 
@@ -1474,7 +1474,7 @@ For the simple integrator model $\ddot{q} = \tau/m$ with $C = [1, 0]$ (only posi
 
 $$Q = \begin{bmatrix} C \\ CA \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$$
 
-$\operatorname{rank}(Q) = 2$ → observable. Velocity can be estimated from position measurements via a Luenberger observer (or Kalman filter).
+$\text{rank}(Q) = 2$ → observable. Velocity can be estimated from position measurements via a Luenberger observer (or Kalman filter).
 
 ## Observer Design → Kalman Filter
 
@@ -1539,14 +1539,14 @@ Mechanical Modeling → ODE → Laplace Transform
 | DCF | Diagonalize $A$ using eigenvectors. Decoupled subsystems. |
 | CCF | Companion form. Always controllable. Bottom row = $-a_i$. |
 | OCF | Dual of CCF. Always observable. Last column = $-a_i$. |
-| Controllability | $\operatorname{rank}(P) = n$: can steer to any state. |
-| Observability | $\operatorname{rank}(Q) = n$: can infer any initial state. |
+| Controllability | $\text{rank}(P) = n$: can steer to any state. |
+| Observability | $\text{rank}(Q) = n$: can infer any initial state. |
 | Duality | Controllability of original = observability of dual. |
 | Minimality | Controllable + observable = minimal realization. |
-| Asymp. stability | All eigenvalues have $\operatorname{Re} < 0$. $A$ is Hurwitz. |
+| Asymp. stability | All eigenvalues have $\text{Re} < 0$. $A$ is Hurwitz. |
 | Marginal stability | Eigenvalues on imaginary axis with A.M. = G.M. |
 | Lyapunov | $V(x) > 0$, $\dot{V}(x) \leq 0$ → stable. $\dot{V} < 0$ → asymp. stable. |
-| BIBO stability | All poles of $H(s)$ have $\operatorname{Re} < 0$. Asymp. stable ⟹ BIBO stable. |
+| BIBO stability | All poles of $H(s)$ have $\text{Re} < 0$. Asymp. stable ⟹ BIBO stable. |
 | Pole placement | Set $K$ so eig($A - BK$) = desired locations. Requires controllability. |
 | Steady-state tracking | Set $G$ to invert DC gain of closed-loop. |
 | 2nd-order specs | %OS → $\zeta$, $t_s$ → $\omega_n$, then place poles at $-\zeta\omega_n \pm j\omega_d$. |
@@ -1560,13 +1560,13 @@ Mechanical Modeling → ODE → Laplace Transform
 
 ## Controllability
 
-$$P = \begin{bmatrix} B & AB & \cdots & A^{n-1}B \end{bmatrix}, \quad \operatorname{rank}(P) \stackrel{?}{=} n$$
+$$P = \begin{bmatrix} B & AB & \cdots & A^{n-1}B \end{bmatrix}, \quad \text{rank}(P) \stackrel{?}{=} n$$
 
 $$W(t_0, t_f) = \int_{t_0}^{t_f} e^{A(t_0-\tau)} BB^T e^{A^T(t_0-\tau)}\, d\tau, \quad W \text{ invertible} \Leftrightarrow \text{controllable}$$
 
 ## Observability
 
-$$Q = \begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1} \end{bmatrix}, \quad \operatorname{rank}(Q) \stackrel{?}{=} n$$
+$$Q = \begin{bmatrix} C \\ CA \\ \vdots \\ CA^{n-1} \end{bmatrix}, \quad \text{rank}(Q) \stackrel{?}{=} n$$
 
 $$M(t_0, t_f) = \int_{t_0}^{t_f} e^{A^T(\tau-t_0)} C^T C\, e^{A(\tau-t_0)}\, d\tau, \quad M \text{ invertible} \Leftrightarrow \text{observable}$$
 
@@ -1574,13 +1574,13 @@ $$M(t_0, t_f) = \int_{t_0}^{t_f} e^{A^T(\tau-t_0)} C^T C\, e^{A(\tau-t_0)}\, d\t
 
 | Form | $A$ | $B$ | $C$ | Always |
 |---|---|---|---|---|
-| DCF | $\operatorname{diag}(\lambda_i)$ | $T_{DCF}^{-1}B$ | $CT_{DCF}$ | Diag if diagonalizable |
+| DCF | $\text{diag}(\lambda_i)$ | $T_{DCF}^{-1}B$ | $CT_{DCF}$ | Diag if diagonalizable |
 | CCF | Companion (superdiagonal) | $[0,\ldots,0,1]^T$ | $[b_0,\ldots,b_{n-1}]$ | Controllable |
 | OCF | Companion (subdiagonal) | $[b_0,\ldots,b_{n-1}]^T$ | $[0,\ldots,0,1]$ | Observable |
 
 ## Stability
 
-$$A \text{ Hurwitz} \Leftrightarrow \operatorname{Re}(\lambda_i(A)) < 0 \; \forall i \Leftrightarrow \exists P \succ 0: A^T P + PA \prec 0$$
+$$A \text{ Hurwitz} \Leftrightarrow \text{Re}(\lambda_i(A)) < 0 \; \forall i \Leftrightarrow \exists P \succ 0: A^T P + PA \prec 0$$
 
 ## 2nd Order Response
 

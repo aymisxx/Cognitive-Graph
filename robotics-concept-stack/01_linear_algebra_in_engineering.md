@@ -144,7 +144,7 @@ $$
 
 This can be written as:
 
-$$
+```math
 \begin{bmatrix}
 2 & -1\\
 -1 & 2
@@ -158,7 +158,7 @@ y
 0\\
 3
 \end{bmatrix}
-$$
+```
 
 This equation has two interpretations.
 

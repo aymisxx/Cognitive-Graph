@@ -2,7 +2,7 @@
 
 ### **What Actually Matters When You're Building Something**
 
-**Focus:** practical depth — what you use in robotics, autonomy, and real control work.
+**Focus:** practical depth: what you use in robotics, autonomy, and real control work.
 
 ---
 
@@ -12,13 +12,13 @@ Every robot you build has the same problem: you have a physical system that evol
 
 That problem has three parts:
 
-1. **Model it** — write down the equations that describe how the system evolves.
-2. **Analyze it** — understand whether it's stable, what you can control, what you can observe.
-3. **Control it** — design an input signal that drives it to the desired behavior.
+1. **Model it** - write down the equations that describe how the system evolves.
+2. **Analyze it** - understand whether it's stable, what you can control, what you can observe.
+3. **Control it** - design an input signal that drives it to the desired behavior.
 
 This subject gives you the mathematical language and tools to do all three rigorously.
 
-In industry — robotics, aerospace, automotive, energy systems — this is the toolkit that underlies almost every controller that runs in production. Model predictive control, LQG, Kalman filters, trajectory optimization: all of it sits on this foundation.
+In industry; robotics, aerospace, automotive, energy systems; this is the toolkit that underlies almost every controller that runs in production. Model predictive control, LQG, Kalman filters, trajectory optimization: all of it sits on this foundation.
 
 ---
 
@@ -30,7 +30,7 @@ Read the Core Formula Sheet and each section's "What this means in practice" blo
 
 ## Mode 2: Design session
 
-Read the relevant section fully — modeling, controllability check, observer design, LQR tuning.
+Read the relevant section fully - modeling, controllability check, observer design, LQR tuning.
 
 ## Mode 3: Full rebuild
 
@@ -100,7 +100,7 @@ where $P^*$ solves $A^T P + PA - PBR^{-1}B^T P + Q = 0$.
 
 ## What it is
 
-You take a physical system — a robot joint, a drone, a motor — and write it as:
+You take a physical system - a robot joint, a drone, a motor - and write it as:
 
 $$
 \dot{x} = Ax + Bu, \qquad y = Cx + Du
@@ -112,7 +112,7 @@ The state $x$ is everything the system needs to know about itself to predict its
 
 **Three steps, always the same:**
 
-1. Choose state variables — typically positions and velocities.
+1. Choose state variables - typically positions and velocities.
 2. Draw a free body diagram, write Newton's law.
 3. Rearrange into first-order form $\dot{x} = Ax + Bu$.
 
@@ -124,7 +124,7 @@ $$
 \dot{x} = \begin{bmatrix} 0 & 1 \\ -k/m & -c/m \end{bmatrix} x + \begin{bmatrix} 0 \\ 1/m \end{bmatrix} u, \qquad y = \begin{bmatrix} 1 & 0 \end{bmatrix} x
 $$
 
-This is the template for any single DOF mechanical system. Robot joints, actuators, suspension systems — all start here.
+This is the template for any single DOF mechanical system. Robot joints, actuators, suspension systems - all start here.
 
 ## From transfer function to state space
 
@@ -149,7 +149,7 @@ The bottom row of $A_{CCF}$ is the negative of the denominator coefficients. The
 
 ## What this means in practice
 
-In robotics you almost never write a transfer function. You write $\dot{x} = f(x, u)$ directly from the dynamics, then linearize. The CCF form matters when you're working with a system identified from frequency response data — which does happen in motor control and structural dynamics.
+In robotics you almost never write a transfer function. You write $\dot{x} = f(x, u)$ directly from the dynamics, then linearize. The CCF form matters when you're working with a system identified from frequency response data - which does happen in motor control and structural dynamics.
 
 The key habit: **always define your state vector explicitly before writing any equations.** Sloppy state definitions cause bugs that are almost impossible to trace.
 
@@ -206,7 +206,7 @@ C = \frac{\partial h}{\partial x}\bigg|_{x_{eq},\, u_{eq}}, \quad
 D = \frac{\partial h}{\partial u}\bigg|_{x_{eq},\, u_{eq}}
 $$
 
-## Worked example — nonlinear spring-mass-damper
+## Worked example - nonlinear spring-mass-damper
 
 System: $m\ddot{y} = F - ky^3 - c\dot{y}$, $m = c = k = 1$.
 
@@ -224,7 +224,7 @@ $$
 
 Now you have an LTI system you can design a controller for.
 
-## Pendulum — two equilibria
+## Pendulum - two equilibria
 
 $\dot{x} = \begin{bmatrix} x_2 \\ -(g/l)\sin(x_1) + u/(ml^2) \end{bmatrix}$
 
@@ -244,13 +244,13 @@ $$
 
 ## What this means in practice
 
-Every nonlinear controller you write — model predictive control, feedback linearization, LQR on a drone — uses this step. You identify the operating regime, compute the Jacobian, and get an LTI model you can work with.
+Every nonlinear controller you write, model predictive control, feedback linearization, LQR on a drone, uses this step. You identify the operating regime, compute the Jacobian, and get an LTI model you can work with.
 
 In robotics: the manipulator Jacobian $J(q)$ is exactly this $A$ matrix for the kinematics. When you compute $J(q)$ at the current configuration and use it for velocity-level control, you are doing real-time linearization at every timestep.
 
-**Lyapunov's indirect method:** If the Jacobian $A$ at an equilibrium is Hurwitz (all eigenvalues have negative real part), the nonlinear system is locally asymptotically stable at that equilibrium. If any eigenvalue has positive real part, the equilibrium is unstable. This is how you determine stability of the upright pendulum, the drone hover, or the robot standing configuration — analytically, before you ever run a simulation.
+**Lyapunov's indirect method:** If the Jacobian $A$ at an equilibrium is Hurwitz (all eigenvalues have negative real part), the nonlinear system is locally asymptotically stable at that equilibrium. If any eigenvalue has positive real part, the equilibrium is unstable. This is how you determine stability of the upright pendulum, the drone hover, or the robot standing configuration, analytically, before you ever run a simulation.
 
-# Section 3: System Response - What the System Actually Does
+# Section 3: System Response: What the System Actually Does
 
 ## Matrix exponential
 
@@ -272,7 +272,7 @@ $$
 e^{At} = \text{diag}(e^{\lambda_1 t}, \ldots, e^{\lambda_n t})
 $$
 
-In practice you never compute this by hand for large systems — MATLAB's `expm(A*t)` handles it. But you need to understand what it means: each mode of the system decays (or grows) at the rate of its eigenvalue.
+In practice you never compute this by hand for large systems, MATLAB's `expm(A*t)` handles it. But you need to understand what it means: each mode of the system decays (or grows) at the rate of its eigenvalue.
 
 ## Full response
 
@@ -280,7 +280,7 @@ $$
 x(t) = \underbrace{e^{At}x_0}_{\text{zero-input}} + \underbrace{\int_0^t e^{A(t-\tau)}Bu(\tau)\,d\tau}_{\text{zero-state}}
 $$
 
-The zero-input part is the natural decay from initial conditions. The zero-state part is the response to the input. They add linearly — this is superposition, and it only holds because the system is linear.
+The zero-input part is the natural decay from initial conditions. The zero-state part is the response to the input. They add linearly, this is superposition, and it only holds because the system is linear.
 
 In frequency domain:
 
@@ -292,9 +292,9 @@ $$
 
 When you simulate a robot after a perturbation (initial condition $x_0 \neq 0$) with no input, you're computing $e^{At}x_0$. When you apply a command, you're computing the convolution integral. Your simulation engine (MATLAB's `lsim`, ROS with `ode45`) is numerically computing exactly this.
 
-The modes of $e^{At}$ tell you the natural frequencies and damping of your system before any control is applied. If those are badly placed — too slow, too oscillatory, or unstable — that's your plant dynamics problem, separate from your controller design problem.
+The modes of $e^{At}$ tell you the natural frequencies and damping of your system before any control is applied. If those are badly placed, too slow, too oscillatory, or unstable, that's your plant dynamics problem, separate from your controller design problem.
 
-# Section 4: Stability - Will It Blow Up?
+# Section 4: Stability: Will It Blow Up?
 
 ## The only criterion you need for LTI systems
 
@@ -306,11 +306,11 @@ $$
 
 That's it. Check the eigenvalues. MATLAB: `eig(A)`.
 
-## Marginal stability — the dangerous middle ground
+## Marginal stability: the dangerous middle ground
 
-If any eigenvalue sits exactly on the imaginary axis ($\text{Re}(\lambda) = 0$), the system is marginally stable — it neither grows nor decays. In practice this is fragile. Any small perturbation, noise, or model error can push it unstable.
+If any eigenvalue sits exactly on the imaginary axis ($\text{Re}(\lambda) = 0$), the system is marginally stable, it neither grows nor decays. In practice this is fragile. Any small perturbation, noise, or model error can push it unstable.
 
-Marginally stable systems driven at their natural frequency produce **resonance** — unbounded output from bounded input. The Tacoma Narrows Bridge collapse in 1940 was resonance. Any undamped oscillator hit at $\omega_n$ is the same phenomenon. Never design a controller that leaves poles on the imaginary axis.
+Marginally stable systems driven at their natural frequency produce **resonance**, unbounded output from bounded input. The Tacoma Narrows Bridge collapse in 1940 was resonance. Any undamped oscillator hit at $\omega_n$ is the same phenomenon. Never design a controller that leaves poles on the imaginary axis.
 
 ## Lyapunov stability check (for when you need a certificate)
 
@@ -326,8 +326,8 @@ This is the **Lyapunov matrix equation**. In MATLAB: `P = lyap(A', Q)`.
 
 Why bother when you can just check eigenvalues? Two reasons:
 
-1. For nonlinear systems you can't check eigenvalues globally — a Lyapunov function gives you a stability certificate with a region of attraction.
-2. The Lyapunov equation is the backbone of LQR (Section 7) — you'll solve a version of it for every optimal controller you design.
+1. For nonlinear systems you can't check eigenvalues globally, a Lyapunov function gives you a stability certificate with a region of attraction.
+2. The Lyapunov equation is the backbone of LQR (Section 7), you'll solve a version of it for every optimal controller you design.
 
 ## Stability of the closed-loop system
 
@@ -337,9 +337,9 @@ $$
 \dot{x} = (A - BK)x
 $$
 
-Stability is now determined by the eigenvalues of $(A - BK)$, not $A$. Your job as a control designer is to choose $K$ so those eigenvalues are where you want them — this is pole placement, covered in Section 6.
+Stability is now determined by the eigenvalues of $(A - BK)$, not $A$. Your job as a control designer is to choose $K$ so those eigenvalues are where you want them, this is pole placement, covered in Section 6.
 
-# Section 5: Controllability and Observability - What You Can and Can't Do
+# Section 5: Controllability and Observability: What You Can and Can't Do
 
 ## Controllability
 
@@ -361,7 +361,7 @@ If rank$(P) < n$, some states are unreachable no matter what input you apply. Po
 
 **Physical intuition:** Controllability fails when some part of the system is dynamically disconnected from the input. A motor that can only spin one axis can't control the other two. A thermal actuator on one side of a symmetric system can't independently control both halves if the structure only passes the average temperature.
 
-**Checking in practice:** Don't just compute `rank(ctrb(A,B))` — check the condition number of $P$ too. A nearly rank-deficient controllability matrix means some modes are weakly controllable, which translates to very large required inputs to move those modes. In hardware that means actuator saturation.
+**Checking in practice:** Don't just compute `rank(ctrb(A,B))`, check the condition number of $P$ too. A nearly rank-deficient controllability matrix means some modes are weakly controllable, which translates to very large required inputs to move those modes. In hardware that means actuator saturation.
 
 ## Observability
 
@@ -379,11 +379,11 @@ $$
 
 MATLAB: `rank(obsv(A, C))`.
 
-If rank$(Q) < n$, some states are invisible to your sensors. No observer or filter — not even a Kalman filter — can recover them.
+If rank$(Q) < n$, some states are invisible to your sensors. No observer or filter, not even a Kalman filter, can recover them.
 
-**Physical example:** A 2-DOF robot arm where you only have an encoder on joint 1. Is joint 2's velocity observable? Depends on the coupling — if joint 2 dynamics are reflected through joint 1 (via inertial coupling), you might be able to infer it. If they're fully decoupled, you can't. The observability matrix tells you the answer analytically before you build anything.
+**Physical example:** A 2-DOF robot arm where you only have an encoder on joint 1. Is joint 2's velocity observable? Depends on the coupling, if joint 2 dynamics are reflected through joint 1 (via inertial coupling), you might be able to infer it. If they're fully decoupled, you can't. The observability matrix tells you the answer analytically before you build anything.
 
-## Duality — the key relationship
+## Duality: the key relationship
 
 Controllability of $(A, B)$ is mathematically identical to observability of $(A^T, B^T)$.
 
@@ -395,11 +395,11 @@ Before you start any control design:
 
 1. Build your model.
 2. Check `rank(ctrb(A,B)) == n`. If not, figure out what's uncontrollable and why.
-3. Check `rank(obsv(A,C)) == n`. If not, figure out what's unobservable and why — or add a sensor.
+3. Check `rank(obsv(A,C)) == n`. If not, figure out what's unobservable and why, or add a sensor.
 
 Skipping this check and going straight to pole placement is a common mistake. MATLAB's `place()` will fail silently or give garbage if the system isn't fully controllable.
 
-# Section 6: Pole Placement - Designing the Closed-Loop Response
+# Section 6: Pole Placement: Designing the Closed-Loop Response
 
 ## What you're doing
 
@@ -413,8 +413,8 @@ Poles in the left half of the complex plane make the system stable. The further 
 
 For a **second-order system** the poles are $s_{1,2} = -\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}$ where:
 
-- $\omega_n$ — natural frequency: controls how fast the response is.
-- $\zeta$ — damping ratio: controls how much it oscillates.
+- $\omega_n$ - natural frequency: controls how fast the response is.
+- $\zeta$ - damping ratio: controls how much it oscillates.
 
 **The design formulas you use repeatedly:**
 
@@ -442,7 +442,7 @@ MATLAB: `K = place(A, B, desired_poles)`.
 
 For repeated poles, use `K = acker(A, B, desired_poles)` (Ackermann's formula).
 
-## Higher-order systems — dominant pole approximation
+## Higher-order systems: dominant pole approximation
 
 For systems higher than 2nd order, place two dominant poles where the 2nd-order specs require, and push all remaining poles at least 5–10× further left so they die out fast and don't affect the response.
 
@@ -450,7 +450,7 @@ Rule: if $|\text{Re}(s_{\text{fast}})| > 5 \times |\text{Re}(s_{\text{dominant}}
 
 **Example:** 3rd-order system, specs give dominant poles at $s_{1,2} = -2 \pm 2j$. Place third pole at $s_3 = -20$. The $e^{-20t}$ component dies in $< 0.2s$, the dominant poles give the $e^{-2t}$ envelope.
 
-## Steady-state tracking — the feedforward gain $G$
+## Steady-state tracking: the feedforward gain $G$
 
 Pole placement alone doesn't guarantee the output reaches the reference. You need to set the DC gain correctly.
 
@@ -476,9 +476,9 @@ $$
 
 Convert back: $K = K_{CCF} \cdot T_{CCF}^{-1}$.
 
-In practice you use MATLAB's `place()`. But you need to understand that pole placement is just a polynomial matching problem — you're choosing $K$ so that $\det(sI - (A-BK))$ equals your desired polynomial.
+In practice you use MATLAB's `place()`. But you need to understand that pole placement is just a polynomial matching problem, you're choosing $K$ so that $\det(sI - (A-BK))$ equals your desired polynomial.
 
-# Section 7: LQR - The Industrial Standard for State Feedback
+# Section 7: LQR: The Industrial Standard for State Feedback
 
 ## Why LQR instead of pole placement
 
@@ -496,8 +496,8 @@ $$
 
 subject to $\dot{x} = Ax + Bu$.
 
-- $Q \succeq 0$ — penalizes state deviation. How much do you care about each state being away from zero?
-- $R \succ 0$ — penalizes control effort. How expensive is actuation?
+- $Q \succeq 0$ - penalizes state deviation. How much do you care about each state being away from zero?
+- $R \succ 0$ - penalizes control effort. How expensive is actuation?
 
 ## The solution
 
@@ -515,7 +515,7 @@ $$
 
 MATLAB: `[K, P, e] = lqr(A, B, Q, R)`.
 
-The closed-loop eigenvalues are returned in `e` — check them.
+The closed-loop eigenvalues are returned in `e`, check them.
 
 ## How to tune $Q$ and $R$
 
@@ -559,15 +559,15 @@ Pole placement gives you none of these guarantees by default.
 4. Run `lqr(A, B, Q, R)`, check eigenvalues of $(A - BK)$.
 5. Simulate step response, disturbance rejection, noise sensitivity.
 6. Adjust $Q/R$ ratio until specs are met.
-7. Check actuator saturation in simulation — if $u$ saturates, increase $R$ or reduce $Q$.
+7. Check actuator saturation in simulation. If $u$ saturates, increase $R$ or reduce $Q$.
 
-# Section 8: Observer Design - Estimating What You Can't Measure
+# Section 8: Observer Design: Estimating What You Can't Measure
 
 ## The problem
 
 In every real system, you don't have access to the full state. Encoders give position, not velocity (usually). IMUs give acceleration and angular rate, not absolute pose. Pressure sensors give one scalar, not the full fluid state.
 
-You need to reconstruct the state from the available outputs — that's the observer.
+You need to reconstruct the state from the available outputs, that's the observer.
 
 ## The Luenberger Observer
 
@@ -583,9 +583,9 @@ $$
 \dot{e} = (A - LC)e
 $$
 
-The error dynamics are governed by $(A - LC)$. By choosing $L$, you place the eigenvalues of $(A - LC)$ — exactly like pole placement, but for the observer.
+The error dynamics are governed by $(A - LC)$. By choosing $L$, you place the eigenvalues of $(A - LC)$, exactly like pole placement, but for the observer.
 
-**This requires the system to be observable.** If it's not, there exist initial states that produce zero output — you can never recover them.
+**This requires the system to be observable.** If it's not, there exist initial states that produce zero output, you can never recover them.
 
 ## Designing $L$
 
@@ -597,7 +597,7 @@ Note the transpose: you're placing poles for $(A - LC)^T = A^T - C^T L^T$, then 
 
 ## Where to place observer poles
 
-Observer poles should be **faster** than controller poles — typically 3–5× further left in the complex plane.
+Observer poles should be **faster** than controller poles, typically 3–5× further left in the complex plane.
 
 Why? The controller needs the state estimate to be accurate before it acts. If the observer is too slow, the controller is acting on stale, inaccurate estimates, which degrades performance or causes instability.
 
@@ -618,7 +618,7 @@ Why not infinitely fast? Faster observer poles mean higher observer gain $L$, wh
 
 The Kalman filter is a Luenberger observer where $L$ is computed optimally given noise covariances. Same structure, optimal gain.
 
-# Section 9: Separation Principle - Putting It All Together
+# Section 9: Separation Principl: Putting It All Together
 
 ## The architecture
 
@@ -632,7 +632,7 @@ $$
 \dot{\hat{x}} = A\hat{x} + Bu + L(y - C\hat{x}) \qquad \text{(observer updates estimate)}
 $$
 
-## Why it works — separation principle
+## Why it works: separation principle
 
 Write the augmented system in terms of $x$ (true state) and $e = x - \hat{x}$ (error):
 
@@ -667,7 +667,7 @@ This architecture is called **LQG (Linear Quadratic Gaussian)** when you use LQR
 
 ## Why second order matters
 
-Most real systems — when designed well — behave approximately like second-order systems near their operating point. The resonance of a joint, the attitude dynamics of a drone, the pitch of a car suspension: all second-order-dominated in the frequency range that matters.
+Most real systems, when designed well, behave approximately like second-order systems near their operating point. The resonance of a joint, the attitude dynamics of a drone, the pitch of a car suspension: all second-order-dominated in the frequency range that matters.
 
 Even for higher-order systems, you use dominant pole approximation to reduce to second-order and then apply these specs. So these formulas come up constantly.
 
@@ -694,23 +694,23 @@ $$
 \zeta = \frac{-\ln(\%OS/100)}{\sqrt{\pi^2 + \ln^2(\%OS/100)}}, \qquad \omega_n = \frac{4}{\zeta \cdot t_s}, \qquad s_{1,2} = -\zeta\omega_n \pm j\omega_d
 $$
 
-## Damping cases — physical meaning
+## Damping cases: physical meaning
 
 | $\zeta$ | Behavior | Real-world analog |
 |---|---|---|
-| $\zeta > 1$ | Overdamped — slow, no overshoot | Heavy fluid suspension |
-| $\zeta = 1$ | Critically damped — fastest without overshoot | Optimal door hinge |
-| $0 < \zeta < 1$ | Underdamped — fast but oscillates | Spring with light damping |
-| $\zeta = 0$ | Undamped — oscillates forever | Ideal LC circuit |
-| $\zeta < 0$ | Unstable — diverges | Inverted pendulum without control |
+| $\zeta > 1$ | Overdamped - slow, no overshoot | Heavy fluid suspension |
+| $\zeta = 1$ | Critically damped - fastest without overshoot | Optimal door hinge |
+| $0 < \zeta < 1$ | Underdamped - fast but oscillates | Spring with light damping |
+| $\zeta = 0$ | Undamped - oscillates forever | Ideal LC circuit |
+| $\zeta < 0$ | Unstable - diverges | Inverted pendulum without control |
 
 ## Typical design targets
 
 In robotics and motion control:
 
 - **$\zeta = 0.7$** is the sweet spot: about 4.3% overshoot, near-optimal settling. Most industrial servo controllers start here.
-- **$\zeta = 0.5$** gives 16% overshoot — too much for precise positioning, fine for force control.
-- **$\zeta = 1.0$** is ideal when you cannot tolerate any overshoot — wafer steppers, surgical robots.
+- **$\zeta = 0.5$** gives 16% overshoot, too much for precise positioning, fine for force control.
+- **$\zeta = 1.0$** is ideal when you cannot tolerate any overshoot, wafer steppers, surgical robots.
 
 High $\omega_n$ = fast system = requires more powerful actuators. Always check whether your hardware can support the bandwidth you're designing for.
 
@@ -727,7 +727,7 @@ $$
 - **Poles:** roots of the denominator. Determine stability and transient response.
 - **Zeros:** roots of the numerator. Affect how quickly the output responds and whether it has undershoot (right-half-plane zeros).
 
-**All poles of $H(s)$ are eigenvalues of $A$. Not all eigenvalues are poles** — pole-zero cancellations can hide modes.
+**All poles of $H(s)$ are eigenvalues of $A$. Not all eigenvalues are poles**, pole-zero cancellations can hide modes.
 
 ## BIBO stability
 
@@ -737,13 +737,13 @@ For LTI systems: BIBO stable $\Leftrightarrow$ all poles of $H(s)$ have negative
 
 **Key practical warning:** BIBO stability is not the same as internal stability.
 
-If your state space model has a pole-zero cancellation — an unstable eigenvalue that cancels out of the transfer function — the system looks BIBO stable but has an internally unstable mode. That mode will grow, it just won't appear in the output until it saturates or breaks something.
+If your state space model has a pole-zero cancellation, an unstable eigenvalue that cancels out of the transfer function, the system looks BIBO stable but has an internally unstable mode. That mode will grow, it just won't appear in the output until it saturates or breaks something.
 
 **This happens in practice** when you have an unobservable or uncontrollable mode. A non-minimal realization can be BIBO stable and internally unstable simultaneously.
 
 **Rule:** Always verify stability at the state space level (eigenvalues of $A$), not just at the transfer function level (poles of $H(s)$). Use minimal realizations.
 
-# Section 12: Workflow Summary - How to Actually Design a Controller
+# Section 12: Workflow Summary: How to Actually Design a Controller
 
 This is the sequence you follow in practice. Every section above is one step here.
 
@@ -760,17 +760,17 @@ This is the sequence you follow in practice. Every section above is one step her
 - Check eigenvalues of $A$: is the open-loop plant stable? (`eig(A)`)
 - Check controllability: `rank(ctrb(A,B))` must equal $n$.
 - Check observability: `rank(obsv(A,C))` must equal $n$.
-- If either fails, fix the system architecture — add actuators/sensors or redesign the model.
+- If either fails, fix the system architecture, add actuators/sensors or redesign the model.
 
 ## Step 3: Design the controller
 
-**Option A — Pole placement (small systems, explicit specs):**
+**Option A: Pole placement (small systems, explicit specs):**
 - Convert %OS and $t_s$ to $\zeta$ and $\omega_n$.
 - Compute desired poles.
 - `K = place(A, B, desired_poles)`.
 - Set `G = -inv(C*inv(A-B*K)*B)` for unit DC gain.
 
-**Option B — LQR (larger systems, systematic tuning):**
+**Option B: LQR (larger systems, systematic tuning):**
 - Set $Q$ and $R$ using Bryson's rule.
 - `[K, P, e] = lqr(A, B, Q, R)`.
 - Check `e` (closed-loop poles).
@@ -799,7 +799,7 @@ This is the sequence you follow in practice. Every section above is one step her
 
 - For LQR: gain and phase margins are guaranteed ($\geq$ 6dB, $\geq$ 60°).
 - For pole placement: compute margins explicitly with `margin(H_ol)`.
-- Test with $\pm 20\%$ model parameter variation — does the closed-loop remain stable?
+- Test with $\pm 20\%$ model parameter variation, does the closed-loop remain stable?
 
 # Section 13: Robotics and Industry Connections
 
@@ -831,11 +831,11 @@ Three separate LQR controllers, one per axis. The full 6-DOF quadrotor is the no
 
 The Luenberger observer is the deterministic version of the Kalman filter. The Kalman filter is an observer where $L$ is computed to minimize the estimation error variance given process noise covariance $Q_w$ and measurement noise covariance $R_n$:
 
-The Kalman gain satisfies the same Riccati equation structure as LQR — by duality. LQR and Kalman filter are literally the same mathematical problem, just one is for control and one is for estimation. LQG combines both.
+The Kalman gain satisfies the same Riccati equation structure as LQR, by duality. LQR and Kalman filter are literally the same mathematical problem, just one is for control and one is for estimation. LQG combines both.
 
 This connection matters: if you understand LQR tuning (how $Q$ and $R$ affect the trade-off), you understand Kalman filter tuning.
 
-## Model Predictive Control (MPC) — where this leads
+## Model Predictive Control (MPC): where this leads
 
 MPC is LQR with a finite horizon and constraints:
 
@@ -864,10 +864,10 @@ MPC is what runs in autonomous vehicles, industrial process control, and many le
 
 | Task | Formula / Command |
 |---|---|
-| Stability | `eig(A)` — all Re $< 0$? |
+| Stability | `eig(A)` - all Re $< 0$? |
 | Controllability | `rank(ctrb(A,B)) == n` |
 | Observability | `rank(obsv(A,C)) == n` |
-| Lyapunov check | `P = lyap(A', eye(n))` — is $P \succ 0$? |
+| Lyapunov check | `P = lyap(A', eye(n))`, is $P \succ 0$? |
 
 ## Controller Design
 
@@ -888,7 +888,7 @@ MPC is what runs in autonomous vehicles, industrial process control, and many le
 | Observer pole rule | Place 3–5× further left than controller poles |
 | Luenberger | `L = place(A', C', obs_poles)'` |
 | Kalman filter | `[L, P, e] = lqe(A, I, C, Qw, Rn)` |
-| Closed-loop verification | `eig(A-L*C)` — all Re $< 0$? |
+| Closed-loop verification | `eig(A-L*C)`, all Re $< 0$? |
 
 ## Combined System Check
 

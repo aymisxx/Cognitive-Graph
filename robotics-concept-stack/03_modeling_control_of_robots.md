@@ -994,7 +994,7 @@ That is where this course touches modern topics like:
 | Task | Formula / idea |
 |---|---|
 | Rotation properties | $R^TR = I$, $R^{-1}=R^T$, $\det R = 1$ |
-| Pose representation | $T = \begin{bmatrix}R & p\\0 & 1\end{bmatrix}$ |
+| Pose representation | $T$ |
 | Compose poses | multiply transformations in frame order |
 
 ## Configuration and DOF

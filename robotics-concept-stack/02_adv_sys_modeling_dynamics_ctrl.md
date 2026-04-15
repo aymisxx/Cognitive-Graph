@@ -894,7 +894,7 @@ MPC is what runs in autonomous vehicles, industrial process control, and many le
 
 | Task | Check |
 |---|---|
-| Separation principle | eig(augmented) = eig$(A-BK)$ ∪ eig$(A-LC)$ |
+| Separation principle | eig(augmented) = eig(A-BK) ∪ eig(A-LC) |
 | Steady-state | $y_{final} = H_{cl}(0) \cdot r$, set $G$ to make this 1 |
 | Actuator limits | Simulate: is $\|u(t)\|$ within hardware limits? |
 

@@ -151,7 +151,12 @@ $$
 End-effector twist:
 
 $$
-v_e = \begin{bmatrix} \dot p_e \\ \omega_e \end{bmatrix} = J(q)\dot q
+v_e =
+\begin{bmatrix}
+\dot p_e \\
+\omega_e
+\end{bmatrix} 
+= J(q)\dot q
 $$
 
 with:

@@ -11,7 +11,7 @@ Instead of treating each subject as an isolated academic module, this folder rev
 - **MAE 501: Linear Algebra in Engineering**  
 - **MAE 506: Adv Sys Model, Dynamics & Ctrl**  
 - **MAE 547: Modeling & Control of Robots**  
-- **EEE 598: Reinforcement Learning Algorithms**  
+- **EEE 591: Reinforcement Learning Algorithms**  
 - **CSE 598: Robot Perception (Computer Vision)**  
 - **EEE 598: Generative-AI (Theory & Practice)**  
 - **MAE 551: Appl ML for Mech & Aero Engineers**  

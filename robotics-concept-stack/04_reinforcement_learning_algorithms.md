@@ -334,26 +334,25 @@ Approximation is the survival mechanism.
 
 ## 3.1 What Q-learning learns
 
-
 Q-learning learns the optimal action-value function directly: the best expected discounted return obtainable from taking action $a$ in state $s$ and then acting optimally thereafter.
 
 Once that function is known, the policy simply picks the action with the largest value at each state.
 
-$$
-\text{Choose } a^{*}(s) \in \arg\max_{a} Q(s,a),
-\qquad
-\pi(s)=a^{*}(s).
-$$
+In plain form:
+
+`a_star(s) = argmax_a Q(s,a)`
+
+and the policy applies that choice at state $s$.
 
 The class notes define Q-learning as model-free and off-policy, and connect it directly to the Bellman optimality fixed point.
 
 ## 3.2 Bellman optimality equation for Q
 
-The target object is:
+The target object is the Bellman optimality relation for the action-value function.
 
-$$
-Q^{*}(s,a)=\mathbb{E}\!\left[r+\gamma \max_{a'} Q^{*}(s',a') \mid s,a\right]
-$$
+In plain form:
+
+`Q_star(s,a) = E[ r + gamma * max over a' of Q_star(s',a') | s,a ]`
 
 This says:
 - take action now,
@@ -1278,88 +1277,5 @@ It is:
 The real jump from beginner to practitioner happens when you stop seeing RL as “agent gets reward” and start seeing it as a structured attempt to approximate optimal sequential control under uncertainty, approximation limits, and data constraints.
 
 That is when RL stops being hype vocabulary and starts becoming control instinct.
-
----
-
-# Minimal Core Formula Sheet
-
-$$
-\pi(a\mid s)=\Pr(A_t=a\mid S_t=s)
-$$
-
-$$
-\pi(s)=a
-$$
-
-$$
-Q_{\mathrm{star}}(s,a)
-=
-\mathbb{E}\!\left[
-r+\gamma \max_{a'} Q_{\mathrm{star}}(s',a')
-\;\middle|\;
-s,a
-\right]
-$$
-
-$$
-Q(s,a)\leftarrow Q(s,a)+\alpha[r+\gamma\max_{a'}Q(s',a')-Q(s,a)]
-$$
-
-$$
-Q(s,a)\leftarrow Q(s,a)+\alpha[r+\gamma Q(s',a')-Q(s,a)]
-$$
-
-$$
-Q_\theta(s,a) \approx Q^*(s,a)
-$$
-
-$$
-y=r+\gamma\max_{a'}Q_{\theta^-}(s',a')
-$$
-
-$$
-L(\theta)=(y-Q_\theta(s,a))^2
-$$
-
-$$
-L_{\delta}(e)=
-\begin{cases}
-\frac{1}{2}e^2 & |e|\le \delta \\
-\delta\left(|e|-\frac{1}{2}\delta\right) & |e|>\delta
-\end{cases}
-$$
-
-$$
-\nabla_\theta J(\theta)=
-\mathbb{E}[\nabla_\theta \log \pi_\theta(a\mid s)Q^{\pi_\theta}(s,a)]
-$$
-
-$$
-\mu_\theta(s): s\mapsto a
-$$
-
-$$
-J(\theta)=\mathbb{E}_{s\sim \rho^\mu}[Q^\mu(s,\mu_\theta(s))]
-$$
-
-$$
-y=r+\gamma Q_{\phi^-}(s',\mu_{\theta^-}(s'))
-$$
-
-$$
-y_i=r_i+\gamma\min_{j=1,2}Q'_{\phi_j}(s'_i,a'_i)
-$$
-
-$$
-J(\pi)=\mathbb{E}\left[\sum_t \gamma^t\big(r(s_t,a_t)+\alpha \mathcal{H}(\pi(\cdot\mid s_t))\big)\right]
-$$
-
-$$
-\mathcal{H}(\pi(\cdot\mid s))=-\mathbb{E}_{a\sim\pi}[\log \pi(a\mid s)]
-$$
-
-$$
-\text{MSE}=(\text{Bias})^2+\text{Var}
-$$
 
 ---

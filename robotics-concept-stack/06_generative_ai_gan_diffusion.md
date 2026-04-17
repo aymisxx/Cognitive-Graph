@@ -178,9 +178,13 @@ $$
 
 **Autoregressive language model:**
 
-$$
-p(x_1,\dots,x_T)=\prod_{t=1}^{T} p(x_t\mid x_{<t})
-$$
+The probability of a full token sequence is written as a product of next-token probabilities conditioned on the previous tokens.
+
+In plain form:
+
+`p(sequence) = p(x1) * p(x2 | x1) * p(x3 | x1, x2) * ... * p(xT | x1, ..., xT-1)`
+
+This means the model generates or scores text one token at a time, always using the past context to predict the next token.
 
 ---
 
@@ -888,17 +892,17 @@ That is diffusion in one spine.
 
 ## 7.1 Why LLMs belong in this course
 
-Because an LLM is also a generative model.
-It just generates token sequences instead of images.
+Because an LLM is also a generative model. It just generates token sequences instead of images.
 
-The joint factorization is autoregressive:
+The sequence probability is built one token at a time from left to right.
 
-$$
-p(x_1,\dots,x_T)=\prod_{t=1}^{T} p(x_t\mid x_{<t})
-$$
+In plain form:
 
-This is still distribution learning.
-The data modality changed. The generative principle did not.
+`p(sequence) = p(x1) * p(x2 | x1) * p(x3 | x1, x2) * ... * p(xT | x1, ..., xT-1)`
+
+So the model always predicts the next token using the tokens that came before it.
+
+This is still distribution learning. The data modality changed. The generative principle did not.
 
 ## 7.2 Entropy and perplexity
 
@@ -1166,70 +1170,6 @@ The real jump from beginner to practitioner happens when you stop seeing GANs, V
 > how do we represent, learn, compare, and sample from complex data distributions?
 
 That is when generative AI stops being hype wallpaper and starts becoming technical instinct.
-
----
-
-# Minimal Core Formula Sheet
-
-$$
-p_{\theta}(x) \approx p^{*}(x)
-$$
-
-$$
-p_{\theta}(x,z)=p_{\theta}(z)\,p_{\theta}(x\mid z)
-$$
-
-$$
-q_{\phi}(z\mid x)
-$$
-
-$$
-\text{ELBO} = \mathbb{E}_{q_{\phi}(z\mid x)}[\log p_{\theta}(x,z)-\log q_{\phi}(z\mid x)]
-$$
-
-$$
-z = \mu(x)+\sigma(x)\odot \epsilon, \qquad \epsilon \sim \mathcal{N}(0,I)
-$$
-
-$$
-\min_G \max_D \; \mathbb{E}_{x\sim p_r}[\log D(x)] + \mathbb{E}_{z\sim p(z)}[\log(1-D(G(z)))]
-$$
-
-$$
-D^{*}(x)=\frac{p_r(x)}{p_r(x)+p_g(x)}
-$$
-
-$$
-W(P_r,P_g)=\inf_{\gamma \in \Pi(P_r,P_g)} \mathbb{E}_{(x,y)\sim \gamma}[\|x-y\|]
-$$
-
-$$
-\mu_P = \mathbb{E}_{x\sim P}[\phi(x)]
-$$
-
-$$
-\mathrm{MMD}(P,Q)=\sup_{f\in \mathcal{F}} \Big(\mathbb{E}_{x\sim P}[f(x)]-\mathbb{E}_{y\sim Q}[f(y)]\Big)
-$$
-
-$$
-q(x_t\mid x_{t-1})
-$$
-
-$$
-p_{\theta}(x_{t-1}\mid x_t)
-$$
-
-$$
-s(x)=\nabla_x \log p(x)
-$$
-
-$$
-p(x_1,\dots,x_T)=\prod_{t=1}^{T} p(x_t\mid x_{<t})
-$$
-
-$$
-\mathrm{Perplexity} = 2^{H}
-$$
 
 ---
 

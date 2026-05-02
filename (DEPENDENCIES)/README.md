@@ -33,9 +33,8 @@ Not everything is gone. Only what was interfering with control.
 
 ### Active Protocols
 
--   Daily GitHub commits (streak integrity maintained).
 -   Physical movement (walk/gym - absolutely non-negotiable).
--   Controlled input → controlled output.
+-   Controlled input → controlled output (OCD-elimination).
 
 ------------------------------------------------------------------------
 
